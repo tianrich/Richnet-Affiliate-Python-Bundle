@@ -11,3 +11,5 @@ Impact
 Partnerize
 Webgains
 LOTS MORE!
+
+NEW **WHODIS** Check an affiliate link for the end url with the option to copy the url

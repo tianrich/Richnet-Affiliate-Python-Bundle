@@ -1,5 +1,5 @@
 def convert_to_digidip(original_link):
-//change the return to add your own affiliate conversion link//
+//change the return to add your own affiliate conversion link and delete this text
 return "https://go.skimresources.com?id=100269X1558466&xs=1&url=" + original_link
 
 while True:

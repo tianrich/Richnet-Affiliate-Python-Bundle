@@ -1,5 +1,6 @@
 def convert_to_digidip(original_link):
-    return "AFFILIATE LINK GOES HERE" + original_link
+//change the return to add your own affiliate conversion link//
+return "https://go.skimresources.com?id=100269X1558466&xs=1&url=" + original_link
 
 while True:
     original_link = input("Please enter a website link: ")

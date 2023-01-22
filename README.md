@@ -17,3 +17,5 @@ NEW **WHODIS** Check an affiliate link for the end url with the option to copy t
 Social - Tweet to Twitter, Twitter API access needed
 
 Richnet Sale - Now the option to simply add the retailer of choice and the url and will share straight to twitter. Don't forget to add your affiliate link and twitter auth codes
+
+richitem.py - change currency but works as a deal sharer to twitter

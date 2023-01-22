@@ -19,7 +19,7 @@ while True:
     item_price = input("Enter the price of the item: ")
 
     # Add affiliate link
-    affiliate_link = "richnet-21"
+    affiliate_link = "richnet-20"
     final_link = amazon_link + "?tag=" + affiliate_link
 
     # Share link on Twitter with item name, price and #ad

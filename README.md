@@ -1,7 +1,7 @@
 # Affiliate links in Python
 Simply add your affiliate programs link into the richnet.py file and run the code using richnet.py
 
-Amazon - Remove richenet-20 and add your own programme number, Works on ANY Amazon website
+Amazon - Remove richenet-20 and add your own affilaite code on line 23. Also change the local currency in link 26 from $, Works on ANY Amazon website
 
 Works with:
 Skimlink

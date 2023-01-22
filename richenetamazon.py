@@ -24,13 +24,6 @@ while True:
 
     # Share link on Twitter with item name, price and #ad
     message = "Check out this great deal on " + item_name + " for only $" + item_price + "! " + final_link + " #ad"
-    api.update_status(message)
+    tweet = api.update_status(message)
     print("Link shared on Twitter!")
-
-    # Give option to copy link
-    copy_choice = input("Do you want to copy the link? (yes/no): ")
-    if copy_choice == "y":
-        pyperclip.copy(final_link)
-        print("Link copied to clipboard!")
-    else:
-        print("Link not copied.")
+    print("Tweet: " + tweet.text)

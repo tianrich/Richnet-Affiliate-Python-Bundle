@@ -19,7 +19,7 @@ while True:
     item_price = input("Enter the price of the item: ")
 
     # Add affiliate link
-    affiliate_link = "spottedbargains-21"
+    affiliate_link = "richnet-21"
     final_link = amazon_link + "?tag=" + affiliate_link
 
     # Share link on Twitter with item name, price and #ad
@@ -29,7 +29,7 @@ while True:
 
     # Give option to copy link
     copy_choice = input("Do you want to copy the link? (yes/no): ")
-    if copy_choice == "yes":
+    if copy_choice == "y":
         pyperclip.copy(final_link)
         print("Link copied to clipboard!")
     else:

@@ -14,7 +14,7 @@ api = tweepy.API(auth)
 while True:
     shop_name = input("Enter the shop name: ")
     link = input("Enter a link to share: ")
-    affiliated_link = f"https://spottedbargains.digidip.net/visit?url={link}"
+    affiliated_link = f"******************{link}"
     message = f"Spotted online - {shop_name} has a sale on at the moment #ad #richnet {affiliated_link}"
     api.update_status(message)
     print("Shared to Twitter: ", message)

@@ -19,19 +19,18 @@ while True:
     price_before = input("Enter the price before the deal: ")
     deal_price = input("Enter the deal price: ")
     product_link = input("Enter the product link: ")
-    use_affiliate_link = input("Do you want to use an affiliate link? (yes/no): ")
-    if use_affiliate_link == 'yes':
-        affiliate_link = getpass.getpass("Enter your affiliate link: ") # hide the input from the terminal
-    else:
-        affiliate_link = ""
-    use_voucher_code = input("Do you want to use a voucher code? (yes/no): ")
-    if use_voucher_code == 'yes':
+    use_voucher_code = input("Do you want to use a voucher code? (y/n): ")
+    if use_voucher_code.lower() == 'y':
         voucher_code = input("Enter the voucher code: ")
     else:
         voucher_code = None
 
+        # Add affiliate link
+    affiliate_link = "YOUR AFFILIATE HTTPS LINK GOES HERE"
+    final_link = affiliate_link + product_link 
+
     # tweet message
-    message = f'{item_name} on sale! Before: {price_before}, Now: {deal_price}'
+    message = f'{item_name} on sale! #ad Before: ${price_before}, Now: ${deal_price}'
     if voucher_code:
         message += f' Use code {voucher_code} at checkout! '
     message += f'Link: {affiliate_link}{product_link}'

@@ -1,43 +1,49 @@
 import tweepy
-import getpass
-import time
 
-# enter your Twitter API keys
-consumer_key = input("Enter your consumer key: ")
-consumer_secret = input("Enter your consumer secret: ")
-access_token = input("Enter your access token: ")
-access_token_secret = input("Enter your access token secret: ")
+# Enter your Twitter API credentials here
+consumer_key = "YOUR_CONSUMER_KEY"
+consumer_secret = "YOUR_CONSUMER_SECRET"
+access_token = "YOUR_ACCESS_TOKEN"
+access_token_secret = "YOUR_ACCESS_TOKEN_SECRET"
 
-# connect to the Twitter API
+# Authenticate with Twitter API
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 while True:
-    # item information
-    item_name = input("Enter the item name: ")
-    price_before = input("Enter the price before the deal: ")
-    deal_price = input("Enter the deal price: ")
-    product_link = input("Enter the product link: ")
-    use_voucher_code = input("Do you want to use a voucher code? (y/n): ")
-    if use_voucher_code.lower() == 'y':
-        voucher_code = input("Enter the voucher code: ")
+    # Get item details from user input
+    item_name = input("Enter item name: ")
+    price_before_prompt = input("Is there a price before? (y/n)")
+    price_before = input("Enter original price: ") if price_before_prompt.lower() == 'y' else None
+    deal_price_prompt = input("Is there a deal price? (y/n)")
+    deal_price = input("Enter deal price: ") if deal_price_prompt.lower() == 'y' else None
+    voucher_code = input("Enter voucher code (optional): ")
+    item_url = input("Enter item URL (optional): ")
+    add_affiliate = input("Do you want to add affiliate link? (y/n)")
+
+    # Construct tweet text
+    if price_before:
+        tweet_text = f"{item_name} is on sale! Before: ${price_before}"
     else:
-        voucher_code = None
+        tweet_text = f"Check out the following sale: {item_name}"
+    if deal_price:
+        tweet_text += f", Now: ${deal_price}"
+       if voucher_code:
+        tweet_text += f" Use code {voucher_code} at checkout!"
+    if item_url:
+        if add_affiliate.lower() == 'y':
+            # Add hidden affiliate link 
+            affiliate_link = "https://go.skimresources.com?id=100269X1558466&xs=1&url="
+            item_url = affiliate_link + item_url
+        tweet_text += f" Check it out here: {item_url} "
+    tweet_text += "#ad"
 
-        # Add affiliate link
-    affiliate_link = "YOUR AFFILIATE HTTPS LINK GOES HERE"
-    final_link = affiliate_link + product_link 
+    # Post tweet
+    api.update_status(tweet_text)
 
-    # tweet message
-    message = f'{item_name} on sale! #ad Before: ${price_before}, Now: ${deal_price}'
-    if voucher_code:
-        message += f' Use code {voucher_code} at checkout! '
-    message += f'Link: {affiliate_link}{product_link}'
-
-    # post the tweet
-    tweet = api.update_status(message)
-    print(f'Tweet sent! Tweet id: {tweet.id}')
-
-    # wait for a certain amount of time before posting the next tweet
-    time.sleep(3600) # waits for 1 hour before posting the next tweet
+    print("Tweet posted!")
+    # Add a prompt asking if the user wants to post another tweet
+    another_tweet = input("Do you want to post another tweet? (y/n)")
+    if another_tweet.lower() == 'n':
+        break
